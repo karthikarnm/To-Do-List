@@ -1,0 +1,24 @@
+
+POST http://localhost:4000/post/item
+Content-Type: application/json
+
+{
+    "item":"hello"
+}
+
+###
+get http://localhost:4000/get/item
+
+###
+
+
+PUT  http://localhost:4000/update/item/651eee53ec09f6ffa46b9eb7
+Content-Type: application/json
+
+{
+    "item":"hello updated"
+}
+
+###
+
+DELETE   http://localhost:4000/delete/item/651eee53ec09f6ffa46b9eb7
