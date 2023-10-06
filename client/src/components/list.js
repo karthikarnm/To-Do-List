@@ -11,6 +11,7 @@ function List() {
   const [listItems, setListItems] = useState([])
   const [isUpdated, setIsUpdated] = useState('')
   const [newList, setNewList] = useState('')
+  const [loading, setLoading] = useState(true);
 
   // Async function to add a new item to the list
   const addItem = async (e) => {
@@ -82,8 +83,10 @@ function List() {
       try {
         const res = await axios.get(`http://localhost:4000/get/item`);
         setListItems(res.data)
+        setLoading(false);
       } catch (err) {
         console.log(err);
+        setLoading(false);
       }
     }
     getlist();
@@ -108,7 +111,10 @@ function List() {
       <div className='flex w-60% justify-center items-center'>
         <div className='mx-20 mt-20  p-4 shadow-md rounded-lg border-t-2 border-teal-300 flex justify-center items-center '>
           <div>
-            {
+          {loading ? (
+            <h1>Loading...</h1>
+          ) :
+            (
               listItems.map(item => (
                 <div>
                   {isUpdated === item._id ? UpdateForm() :
@@ -135,13 +141,13 @@ function List() {
                   }
                 </div>
               ))
-            }
+            )}
           </div>
         </div>
       </div>
     </>
-  )
-}
+  )}
+
 
 // Export the List component as the default export
 export default List

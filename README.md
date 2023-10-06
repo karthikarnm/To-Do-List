@@ -1,4 +1,4 @@
 # To-Do-List
-just clone it and enter 
+Go to root folder enter 
 $ npm run app
 
